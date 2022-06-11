@@ -933,52 +933,52 @@ while(2 > 1):
                                             bot.sendMessage(chat['object_guid'], text , chat['last_message']['message_id'])
                                     except:
                                         print('wiki s err')
-                                elif text.startswith('جوک بگو'):
+                                elif text.startswith('!jok'):
                                     tawd9 = Thread(target=joker, args=(text, chat, bot,))
                                     tawd9.start()
-                                elif text.startswith('اسمح شاخح'):
+                                elif text.startswith('!name_shakh'):
                                     tawd32 = Thread(target=name_shakh, args=(text, chat, bot,))
                                     tawd32.start()
-                                elif text.startswith('خاطره بگو'):
+                                elif text.startswith('!khatere'):
                                     tawd29 = Thread(target=get_khatere, args=(text, chat, bot,))
                                     tawd29.start()
-                                elif text.startswith('داستان بگو'):
+                                elif text.startswith('!danesh'):
                                     tawd30 = Thread(target=get_danesh, args=(text, chat, bot,))
                                     tawd30.start()
-                                elif text.startswith('جوک کيري بگو'):
+                                elif text.startswith('!pa_na_pa'):
                                     tawd24 = Thread(target=get_pa_na_pa, args=(text, chat, bot,))
                                     tawd24.start()
-                                elif text.startswith('کصشر بگو'):
+                                elif text.startswith('!alaki_masala'):
                                     tawd31 = Thread(target=get_alaki_masala, args=(text, chat, bot,))
                                     tawd31.start()
-                                elif text.startswith('داستان بگو'):
+                                elif text.startswith('!dastan'):
                                     tawd25 = Thread(target=get_dastan, args=(text, chat, bot,))
                                     tawd25.start()
-                                elif text.startswith('بيو شاخح بدح'):
+                                elif text.startswith('!bio'):
                                     tawd27 = Thread(target=get_bio, args=(text, chat, bot,))
                                     tawd27.start()
-                                elif text.startswith('سرچ کامل ['):
+                                elif text.startswith('!search-k ['):
                                     tawd26 = Thread(target=get_search_k, args=(text, chat, bot,))
                                     tawd26.start()
-                                elif text.startswith('بن [') and chat['abs_object']['type'] == 'Group' and 'BanMember' in access:
+                                elif text.startswith('!ban [') and chat['abs_object']['type'] == 'Group' and 'BanMember' in access:
                                     try:
                                         user = text[6:-1].replace('@', '')
                                         guid = bot.getInfoByUsername(user)["data"]["chat"]["abs_object"]["object_guid"]
                                         admins = [i["member_guid"] for i in bot.getGroupAdmins(chat['object_guid'])["data"]["in_chat_members"]]
                                         if not guid in admins and chat['last_message']['author_object_guid'] in admins:
                                             bot.banGroupMember(chat['object_guid'], guid)
-                                            bot.sendMessage(chat['object_guid'], 'انجام شد دا' , chat['last_message']['message_id'])
+                                            bot.sendMessage(chat['object_guid'], 'انجام شد' , chat['last_message']['message_id'])
                                     except:
                                         print('ban bug')
-                                elif text.startswith('سرچ با عکس ['):
+                                elif text.startswith('!search-i ['):
                                     print('mpa started')
                                     tawd = Thread(target=search_i, args=(text, chat, bot,))
                                     tawd.start()
-                                elif text.startswith('ريم') and chat['abs_object']['type'] == 'Group' and 'BanMember' in access:
+                                elif text.startswith('!remove') and chat['abs_object']['type'] == 'Group' and 'BanMember' in access:
                                     print('mpa started')
                                     tawd2 = Thread(target=uesr_remove, args=(text, chat, bot,))
                                     tawd2.start()
-                                elif text.startswith('ترجمه ['):
+                                elif text.startswith('!trans ['):
                                     tawd28 = Thread(target=get_trans, args=(text, chat, bot,))
                                     tawd28.start()
                                 elif text.startswith('!myket-s ['):
@@ -987,7 +987,7 @@ while(2 > 1):
                                         if hasInsult(search)[0] == False and chat['abs_object']['type'] == 'Group':
                                             bot.sendMessage(chat['object_guid'], 'نتایج کامل به زودی به پیوی شما ارسال میشوند', chat['last_message']['message_id'])                           
                                             jd = json.loads(requests.get('https://www.wirexteam.ga/myket?type=search&query=' + search).text)
-                                            jd = jd['سرچ']
+                                            jd = jd['search']
                                             a = 0
                                             text = ''
                                             for j in jd:
@@ -1013,45 +1013,45 @@ while(2 > 1):
                                                 bot.sendMessage(chat['object_guid'], text , chat['last_message']['message_id'])
                                     except:
                                         print('myket server err')
-                                elif text.startswith('ويکي ['):
+                                elif text.startswith('!wiki ['):
                                     tawd23 = Thread(target=get_wiki, args=(text, chat, bot,))
                                     tawd23.start()
-                                elif text.startswith('ارز'):
+                                elif text.startswith('!currency'):
                                     print('mpa started')
                                     tawd15 = Thread(target=get_curruncy, args=(text, chat, bot,))
                                     tawd15.start()
-                                elif text.startswith('قيمت طلا'):
+                                elif text.startswith('!gold'):
                                     tawd22 = Thread(target=get_gold, args=(text, chat, bot,))
                                     tawd22.start()
-                                elif text.startswith('پينگ ['):
+                                elif text.startswith('!ping ['):
                                     tawd21 = Thread(target=get_ping, args=(text, chat, bot,))
                                     tawd21.start()
-                                elif text.startswith('فونت ['):
+                                elif text.startswith('!font ['):
                                     tawd20 = Thread(target=get_font, args=(text, chat, bot,))
                                     tawd20.start()
-                                elif text.startswith('فونت فارسي ['):
+                                elif text.startswith('!font-fa ['):
                                     tawd34 = Thread(target=get_font_fa, args=(text, chat, bot,))
                                     tawd34.start()
                                 elif text.startswith('!whois ['):
                                     tawd19 = Thread(target=get_whois, args=(text, chat, bot,))
                                     tawd19.start()
-                                elif text.startswith('لغت ['):
+                                elif text.startswith('!vaj ['):
                                     tawd33 = Thread(target=get_vaj, args=(text, chat, bot,))
                                     tawd33.start()
-                                elif text.startswith('اب و هوا ['):
+                                elif text.startswith('!weather ['):
                                     tawd18 = Thread(target=get_weather, args=(text, chat, bot,))
                                     tawd18.start()
-                                elif text.startswith('ip ['):
+                                elif text.startswith('!ip ['):
                                     tawd17 = Thread(target=get_ip, args=(text, chat, bot,))
                                     tawd17.start()
-                                elif text.startswith("افزودن [") and chat['abs_object']['type'] == 'Group' and 'AddMember' in access:
+                                elif text.startswith("!add [") and chat['abs_object']['type'] == 'Group' and 'AddMember' in access:
                                     try:
                                         user = text[6:-1]
                                         bot.invite(chat['object_guid'], [bot.getInfoByUsername(user.replace('@', ''))["data"]["chat"]["object_guid"]])
                                         bot.sendMessage(chat['object_guid'], 'اضافه شد' , chat['last_message']['message_id'])                         
                                     except:
                                         print('add not successd')  
-                                elif text.startswith('ماشين حساب ['):
+                                elif text.startswith('!math ['):
                                     try:
                                         amal_and_value = text[7:-1]
                                         natije = ''
@@ -1080,21 +1080,21 @@ while(2 > 1):
                                             bot.sendMessage(chat['object_guid'], natije , chat['last_message']['message_id'])
                                     except:
                                         print('math err')  
-                                elif text.startswith('شات'):
+                                elif text.startswith('!shot'):
                                     tawd16 = Thread(target=shot_image, args=(text, chat, bot,))
                                     tawd16.start()
-                                elif text.startswith('بنال'):
+                                elif text.startswith('!speak'):
                                     print('mpa started')
                                     tawd6 = Thread(target=speak_after, args=(text, chat, bot,))
                                     tawd6.start()
-                                elif text.startswith('دانستني عکس'):
+                                elif text.startswith('!p_danesh'):
                                     tawd12 = Thread(target=p_danesh, args=(text, chat, bot,))
                                     tawd12.start()
-                                elif text.startswith('بنويس ['):
+                                elif text.startswith('!write ['):
                                     print('mpa started')
                                     tawd5 = Thread(target=write_image, args=(text, chat, bot,))
                                     tawd5.start()
-                                elif text.startswith('کروز'):
+                                elif text.startswith('!qroz'):
                                     print('qroz lovolier for ever (:')
                                     tawd45 = Thread(target=get_qroz_me, args=(text, chat, bot,))
                                     tawd45.start()
@@ -1135,17 +1135,17 @@ while(2 > 1):
                                 elif text.startswith('!backup') and chat['object_guid'] in qrozAdmins:
                                     tawd44 = Thread(target=get_backup, args=(text, chat, bot, auths,))
                                     tawd44.start()
-                                elif text.startswith('مسدود [') and chat['object_guid'] in qrozAdmins:
+                                elif text.startswith('!black [') and chat['object_guid'] in qrozAdmins:
                                     try:
                                         guid = text[8:-1]
                                         if len(guid) == 32 and not guid in black_users:
                                             fp = open('black_list.txt','a')
                                             fp.write('\n' + guid)
                                             fp.close()
-                                            bot.sendMessage(guid, 'خ سيد . تو ليست سياه هستي فعلا')
+                                            bot.sendMessage(guid, 'متاسفانه شما فعلا به لیست سیاه پفک اضافه شدید')
                                     except:
                                         print('black list err')
-                                elif text.startswith('حذف مسدود [') and chat['object_guid'] in qrozAdmins:
+                                elif text.startswith('!unblack [') and chat['object_guid'] in qrozAdmins:
                                     try:
                                         guid = text[10:-1]
                                         if len(guid) == 32 and guid in black_users:
@@ -1153,7 +1153,7 @@ while(2 > 1):
                                             bl = open('black_list.txt','w')
                                             bl.write(black_users.replace('\n' + guid, ''))
                                             bl.close()
-                                            bot.sendMessage(guid, 'ايول سيد از ليست سياه بات اومدي بيرون')
+                                            bot.sendMessage(guid, 'خوشبختانه از لیست سیاه پفک بیرون آمدید')
                                     except:
                                         print('black list err')
                                 elif chat['abs_object']['type'] == 'Group' and chat['last_message']['author_object_guid'] in qrozAdmins and text.startswith('!black') and not chat['object_guid'] in black_users:
